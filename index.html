@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOC 2 System Description Skeleton Generator</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <h1>SOC 2 System Description Skeleton Generator</h1>
+    <p class="tagline">Draft the narrative every SOC 2 report requires, section by section.</p>
+  </div>
+</header>
+
+<div class="disclaimer wrap" role="note">
+  <strong>Drafting aid only.</strong> This skeleton is a starting point, not a complete system description.
+  Not an audit, attestation, CPA opinion, or legal advice.
+</div>
+
+<main class="wrap layout">
+  <section class="panel form-panel" aria-label="System description inputs">
+    <h2>1. Company and engagement</h2>
+    <label>Company name
+      <input id="companyName" type="text" placeholder="Example: Acme Cloud Inc.">
+    </label>
+    <label>System / service name
+      <input id="serviceName" type="text" placeholder="Example: Acme Cloud Platform">
+    </label>
+    <label>Report period
+      <input id="reportPeriod" type="text" placeholder="Example: January 1, 2026 to December 31, 2026">
+    </label>
+    <label>Report type
+      <select id="reportType">
+        <option value="Type II">Type II (design and operating effectiveness)</option>
+        <option value="Type I">Type I (design only, point in time)</option>
+      </select>
+    </label>
+
+    <h2>2. Description of services</h2>
+    <label>What the service does for customers
+      <textarea id="servicesDesc" rows="5" placeholder="Describe the service, who uses it, and the value it provides."></textarea>
+    </label>
+
+    <h2>3. System boundaries</h2>
+    <label>In scope (components, locations, teams, systems)
+      <textarea id="inScope" rows="4" placeholder="List what is inside the system boundary."></textarea>
+    </label>
+    <label>Out of scope
+      <textarea id="outOfScope" rows="4" placeholder="List what is explicitly outside the boundary."></textarea>
+    </label>
+
+    <h2>4. Commitments and requirements</h2>
+    <label>Principal service commitments (SLAs, contracts, published promises)
+      <textarea id="commitments" rows="4" placeholder="Example: 99.9% monthly uptime SLA, published security practices."></textarea>
+    </label>
+    <label>System requirements (how the system must operate to meet commitments)
+      <textarea id="requirements" rows="4" placeholder="Example: encrypted data at rest, MFA for all administrative access."></textarea>
+    </label>
+
+    <h2>5. Infrastructure</h2>
+    <label>Hosting, cloud providers, data centers, network
+      <textarea id="infrastructure" rows="4" placeholder="Example: AWS us-east-1 and us-west-2, Cloudflare edge, corporate office in Augusta, GA."></textarea>
+    </label>
+
+    <h2>6. Software and data flows</h2>
+    <label>Applications, databases, and how data moves
+      <textarea id="softwareFlows" rows="5" placeholder="Describe key applications, datastores, integrations, and data flow from input to output."></textarea>
+    </label>
+
+    <h2>7. People</h2>
+    <label>Organizational structure
+      <textarea id="orgStructure" rows="4" placeholder="Describe teams and reporting lines relevant to the system."></textarea>
+    </label>
+    <label>Key roles and responsibilities
+      <textarea id="keyRoles" rows="4" placeholder="Example: CTO owns security program, DevOps owns infrastructure changes."></textarea>
+    </label>
+
+    <h2>8. Subservice organizations</h2>
+    <label>Vendors included via carve-out or inclusive method
+      <textarea id="subserviceOrgs" rows="4" placeholder="Example: AWS (carve-out), Stripe (carve-out). One per line."></textarea>
+    </label>
+
+    <h2>9. Complementary user entity controls (CUECs)</h2>
+    <label>Controls customers must operate for your controls to work
+      <textarea id="cuecs" rows="4" placeholder="Example: customers must manage their own user provisioning and review access quarterly."></textarea>
+    </label>
+
+    <h2>10. Trust Services Categories in scope</h2>
+    <p class="hint">Security (the Common Criteria) is required in every SOC 2 engagement.</p>
+    <label class="check locked"><input type="checkbox" checked disabled> Security (33 criteria, always included)</label>
+    <label class="check"><input type="checkbox" id="scopeAvailability"> Availability (3 criteria)</label>
+    <label class="check"><input type="checkbox" id="scopeProcessing"> Processing Integrity (5 criteria)</label>
+    <label class="check"><input type="checkbox" id="scopeConfidentiality"> Confidentiality (2 criteria)</label>
+    <label class="check"><input type="checkbox" id="scopePrivacy"> Privacy (18 criteria)</label>
+
+    <div class="form-actions">
+      <button id="resetBtn" type="button" class="btn secondary">Reset form</button>
+    </div>
+  </section>
+
+  <section class="panel preview-panel" aria-label="Generated skeleton preview">
+    <div class="preview-head">
+      <h2>Generated skeleton</h2>
+      <div class="btnrow">
+        <button id="copyBtn" type="button" class="btn">Copy Markdown</button>
+        <button id="downloadBtn" type="button" class="btn primary">Download Markdown</button>
+      </div>
+    </div>
+    <div id="preview" class="preview"></div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <p>Built by <strong>AI Tech Pros</strong> &middot;
+      Criteria data: <a href="https://github.com/nehemiah313/tsc-dataset">nehemiah313/tsc-dataset</a></p>
+    <p class="fineprint">Drafting aid only. This skeleton is a starting point, not a complete system description.
+      Not an audit, attestation, CPA opinion, or legal advice.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
